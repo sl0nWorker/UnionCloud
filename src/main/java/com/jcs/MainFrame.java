@@ -34,7 +34,7 @@ public class MainFrame extends JFrame {
     private DefaultListModel listModel = new DefaultListModel();
     private ArrayList<Files.Metadata> entries;
     static final String clientId = "0.1";
-    static final String pathToAuthTokens = "C:\\Users\\Anderson\\IdeaProjects\\UnionCloud\\src\\main\\java\\com\\jcs\\tokens.txt";
+    static final String pathToAuthTokens = "C:\\Users\\T1000\\IdeaProjects\\UnionCloud2\\src\\main\\java\\com\\jcs\\tokens.txt";
     MainFrame(String title) throws DbxException, IOException, JsonReader.FileLoadException {
 
         FileReader r = new FileReader(pathToAuthTokens);
@@ -46,6 +46,17 @@ public class MainFrame extends JFrame {
         }else {
             DbxRequestConfig config = new DbxRequestConfig(clientId, Locale.getDefault().toString());
             client = new DbxClientV2(config, token);
+
+           // OutputStream outStream = new FileOutputStream("dd"); - загрузка с дропбокса
+           // client.files.downloadBuilder("lol").run(outStream);
+
+            //InputStream inputStream = new FileInputStream("gg"); - загрузка на дропбокс
+            // client.files.uploadBuilder("gg").run(inputStream);
+
+            //client.files.delete("path"); удаление файлов
+
+            //дизайн + дописать эти функции
+
 
             entries = client.files.listFolder("").entries;
 
